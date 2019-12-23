@@ -8,19 +8,16 @@
 
 #include "templates.h"
 
-
 void print_help() {
 
-    std::cout << "'1'           - Create quadrate"   << std::endl;
+    std::cout << "'1'           - Create square"     << std::endl;
     std::cout << "'2'           - Create rectangle"  << std::endl;
     std::cout << "'3'           - Create trapeze"    << std::endl;
-    
-
+    std::cout << "'4'           - Tuple"             << std::endl;
+    std::cout << "'0'           - Exit"              << std::endl;
 }
-    
 
-
-enum Commands{
+enum Commands{ // перечисление комманд
   cmd_quit,
   cmd_sqr,
   cmd_rect,
@@ -28,7 +25,7 @@ enum Commands{
     cmd_tpl
 };
 
-template<class T>
+template<class T> // шаблон функции process
 void process() {
   T object(std::cin);
   //void read(std::cin, object);
@@ -60,7 +57,7 @@ int main(){
       for(int i = 0; i < 4; ++i){
 	std::cin >> vrtx[i];
       }
-      std::tuple<vertex<int>, vertex<int>, vertex<int>, vertex<int>>
+      std::tuple<vertex<int>, vertex<int>, vertex<int>, vertex<int>> // кортеж tuple (элементы с фикс размером)
 	f_tuple{{vrtx[0].x, vrtx[0].y}, {vrtx[1].x, vrtx[1].y}, {vrtx[2].x, vrtx[2].y}, {vrtx[3].x, vrtx[3].y}};
       if ((((vrtx[1].x - vrtx[0].x)*(vrtx[3].x - vrtx[0].x))+((vrtx[1].y - vrtx[0].y)*(vrtx[3].y - vrtx[0].y)) == 0) && (((vrtx[2].x - vrtx[1].x)*(vrtx[2].x - vrtx[3].x))+((vrtx[2].y - vrtx[1].y)*(vrtx[2].y - vrtx[3].y)) == 0) && (((vrtx[3].x - vrtx[2].x)*(vrtx[1].x - vrtx[2].x))+((vrtx[3].y - vrtx[2].y)*(vrtx[1].y - vrtx[2].y)) == 0)) {
 	if (((vrtx[1].x - vrtx[0].x) == (vrtx[0].y - vrtx[3].y)) && ((vrtx[2].x - vrtx[1].x) == (vrtx[1].y - vrtx[0].y)) && ((vrtx[3].x - vrtx[2].x) == (vrtx[2].y - vrtx[1].y))){
